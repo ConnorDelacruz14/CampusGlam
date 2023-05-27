@@ -12,6 +12,7 @@ import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import NavBar from "../components/NavBar";
 import HorizontalSwipeList from "../components/HorizontalSwipeList";
+import ProfileIcon from "../components/ProfileIcon";
 
 function SearchBar() {
   const navigation = useNavigation();
@@ -72,6 +73,8 @@ export default function Home() {
       <View style={styles.swipeListsContainer}>
         <HorizontalSwipeList title="Featured" />
         <HorizontalSwipeList title="Nearby" />
+        <ProfileIcon name="Connor" />
+        <ProfileIcon name="Matthew" />
       </View>
       <NavBar />
     </View>
