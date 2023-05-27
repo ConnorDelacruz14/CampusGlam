@@ -6,15 +6,21 @@ import {
   View,
   TouchableWithoutFeedback,
   Keyboard,
+  ScrollView,
+  SafeAreaView,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { PanGestureHandler, State } from "react-native-gesture-handler";
 import NavBar from "../components/NavBar";
 
 class UserRectangles extends React.Component {
   render() {
-    return <View style={styles.rectangle}></View>;
+    const { text, textStyle } = this.props;
+    return (
+      <View style={styles.rectangle}>
+        <Text style={[styles.rectangleText, textStyle, { fontFamily: "FancyFont" }]}>{text}</Text>
+      </View>
+    );
   }
 }
 
@@ -33,41 +39,57 @@ export default function Home() {
   }, [navigation]);
 
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={styles.container}>
-        <View style={styles.searchContainer}>
-          <Feather
-            name="arrow-left"
-            size={24}
-            color="black"
-            style={styles.icon}
-            onPress={handlePress}
-          />
-          <TextInput
-            ref={searchInputRef}
-            style={styles.input}
-            placeholder="Search CampusGlam"
-          />
-        </View>
-        <Text style={styles.title}></Text>
-        <View style={styles.rectanglesContainer}>
-          <UserRectangles />
-          <UserRectangles />
-          <UserRectangles />
-        </View>
-        <NavBar />
+    <SafeAreaView style={styles.container}>
+      <View style={styles.searchBarContainer}>
+        <Feather
+          name="arrow-left"
+          size={24}
+          color="black"
+          style={styles.icon}
+          onPress={handlePress}
+        />
+        <TextInput
+          ref={searchInputRef}
+          style={styles.input}
+          placeholder="Search CampusGlam"
+        />
       </View>
-    </TouchableWithoutFeedback>
+      <ScrollView
+        contentContainerStyle={styles.scrollContentContainer}
+        showsVerticalScrollIndicator={false}
+      >
+        <View style={styles.contentContainer}>
+          <Text style={styles.title}>TRENDING</Text>
+          <View style={styles.rectanglesContainer}>
+            <UserRectangles
+              text="Lash Salon"
+              textStyle={styles.textStyle2}
+            />
+            <Text style={styles.textSpacing}>&nbsp;</Text>
+            <UserRectangles />
+            <Text style={styles.textSpacing}>&nbsp;</Text>
+            <UserRectangles />
+            <Text style={styles.textSpacing}>&nbsp;</Text>
+            <UserRectangles />
+            <Text style={styles.textSpacing}>&nbsp;</Text>
+            <UserRectangles />
+            <Text style={styles.textSpacing}>&nbsp;</Text>
+            <UserRectangles />
+            <Text style={styles.textSpacing}>&nbsp;</Text>
+            <UserRectangles />
+          </View>
+        </View>
+      </ScrollView>
+      <NavBar />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
   },
-  searchContainer: {
+  searchBarContainer: {
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#fff",
@@ -75,11 +97,8 @@ const styles = StyleSheet.create({
     borderColor: "#ccc",
     borderWidth: 1,
     padding: 10,
-    margin: 10,
-    position: "absolute",
-    top: 80,
-    left: 30,
-    width: 350,
+    marginHorizontal: 40,
+    marginTop: 10,
   },
   icon: {
     marginRight: 10,
@@ -89,20 +108,42 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     fontSize: 16,
   },
+  scrollContentContainer: {
+    flexGrow: 1,
+    paddingTop: 20,
+    paddingBottom: 60,
+    paddingHorizontal: 10,
+  },
+  contentContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
   title: {
     fontSize: 24,
     fontWeight: "bold",
     marginVertical: 10,
   },
   rectanglesContainer: {
-    marginTop: 20,
     alignItems: "center",
+    marginTop: 20,
+    marginBottom: 20,
   },
   rectangle: {
     width: 350,
     height: 160,
     backgroundColor: "white",
     borderRadius: 10,
-    marginBottom: 65, // Adjust this value to change the spacing between the rectangles
+    marginBottom: 65,
   },
+  rectangleText: {
+    textAlign: "center",
+  },
+  textSpacing: {
+    height: 10,
+    fontSize: 0, // Hide the text spacing, setting it to zero font size
+  },
+  // textStyle1: {
+    
+  // },
 });
