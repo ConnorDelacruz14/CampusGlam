@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {
   TextInput,
   StyleSheet,
-  Text,
   View,
   Image,
   TouchableOpacity,
@@ -44,6 +43,10 @@ export default function Home() {
     <View style={styles.container}>
       <View style={styles.logoContainer}>
         <Image source={require("../icons/uci-logo.png")} style={styles.logo} />
+        <SearchBar />
+
+        <NavBar />
+
         <Text>Guest</Text>
         <View
           style={{
