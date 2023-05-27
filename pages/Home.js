@@ -19,6 +19,7 @@ function SearchBar() {
   };
 
   return (
+    // Hello World
     <TouchableOpacity style={styles.searchContainer} onPress={handlePress}>
       <Feather name="search" size={24} color="black" style={styles.icon}/>
       <TextInput
