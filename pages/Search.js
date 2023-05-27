@@ -18,7 +18,6 @@ function SearchBar() {
   const handlePress = () => {
     navigation.navigate("Home");
   };
-  
 
   useEffect(() => {
     if (navigation.isFocused()) {
@@ -27,25 +26,25 @@ function SearchBar() {
   }, [navigation]);
 
   return (
-
     <View style={styles.searchContainer}>
-      <Feather name="arrow-left" size={24} color="black" style={styles.icon} onPress={handlePress}/>
+      <Feather
+        name="arrow-left"
+        size={24}
+        color="black"
+        style={styles.icon}
+        onPress={handlePress}
+      />
       <TextInput
         ref={searchInputRef}
         style={styles.input}
         placeholder="Search CampusGlam"
       />
-        
     </View>
-    
-    
   );
 }
 
-function UserRectangles(){
-
+function UserRectangles() {
   return <View style={styles.rectangle}></View>;
-
 }
 
 export default function Home() {
@@ -55,28 +54,28 @@ export default function Home() {
         <SearchBar />
         <Text style={styles.title}></Text>
         <UserRectangles></UserRectangles>
+        <NavBar></NavBar>
       </View>
     </TouchableWithoutFeedback>
   );
 }
 
 const styles = StyleSheet.create({
-
   container: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
   },
   searchContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#fff',
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#fff",
     borderRadius: 30,
-    borderColor: '#ccc',
+    borderColor: "#ccc",
     borderWidth: 1,
     padding: 10,
     margin: 10,
-    position: 'absolute',
+    position: "absolute",
     top: 80,
     left: 30,
     width: 350,
@@ -97,7 +96,7 @@ const styles = StyleSheet.create({
   rectangle: {
     width: 350,
     height: 160,
-    backgroundColor: 'blue',
+    backgroundColor: "blue",
     borderRadius: 10, // Adjust this value to change the roundness of the edges
   },
 });
