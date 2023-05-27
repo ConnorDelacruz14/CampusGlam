@@ -8,14 +8,11 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   Keyboard,
-  Dimensions,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import NavBar from "../components/NavBar";
 import HorizontalSwipeList from "../components/HorizontalSwipeList";
-
-const { width } = Dimensions.get("window");
 
 function SearchBar() {
   const navigation = useNavigation();
@@ -44,12 +41,6 @@ function SearchBar() {
 
 export default function Home() {
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={styles.container}>
-        <View style={styles.logoContainer}>
-          <Image source={require("../icons/uci-logo.png")} style={styles.logo} />
-        </View>
-        <SearchBar />
     <View style={styles.container}>
       <View style={styles.logoContainer}>
         <Image source={require("../icons/uci-logo.png")} style={styles.logo} />
@@ -91,15 +82,15 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   logoContainer: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    margin: 10,
+    display: "flex",
+    flexDirection: "row",
+    alignContent: "center",
+    justifyContent: "space-between",
+    marginTop: 40,
   },
   logo: {
-    width: width * 0.2,
-    height: width * 0.12,
-
+    width: 100,
+    height: 60,
   },
   searchContainer: {
     display: "flex",
@@ -111,8 +102,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     margin: 10,
-    top: 130,
-    width: 350,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
