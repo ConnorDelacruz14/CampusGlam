@@ -14,10 +14,10 @@ function MyStack() {
         component={Home} 
         options={{headerShown: false}}
       />
-      <Stack.Screen
-        name = "Search"
-        component = {Search}
-        options = {{headerShown: false}}
+      <Stack.Screen 
+        name="Search" 
+        component={Search} 
+        options={{headerShown: true}}
       />
     </Stack.Navigator>
   );
