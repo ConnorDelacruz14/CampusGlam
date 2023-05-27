@@ -74,14 +74,6 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 50,
     width: 400,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.15,
-    shadowRadius: 3.84,
-    elevation: 5,
   },
   icon: {
     marginRight: 10,
