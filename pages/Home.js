@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {
   TextInput,
   StyleSheet,
-  Text,
   View,
   Image,
   TouchableOpacity,
@@ -44,7 +43,7 @@ export default function Home() {
       <View style={styles.container}>
         <Image source={require("../icons/uci-logo.png")} style={styles.logo} />
         <SearchBar />
-        <Text style={styles.title}></Text>
+
         <NavBar />
       </View>
     </TouchableWithoutFeedback>
