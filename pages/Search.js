@@ -18,7 +18,7 @@ class UserRectangles extends React.Component {
     const { text, textStyle } = this.props;
     return (
       <View style={styles.rectangle}>
-        <Text style={[styles.rectangleText, textStyle, { fontFamily: "FancyFont" }]}>{text}</Text>
+        <Text style={[styles.rectangleText, textStyle]}>{text}</Text>
       </View>
     );
   }
@@ -61,10 +61,7 @@ export default function Home() {
         <View style={styles.contentContainer}>
           <Text style={styles.title}>TRENDING</Text>
           <View style={styles.rectanglesContainer}>
-            <UserRectangles
-              text="Lash Salon"
-              textStyle={styles.textStyle2}
-            />
+            <UserRectangles text="Lash Salon" textStyle={styles.textStyle2} />
             <Text style={styles.textSpacing}>&nbsp;</Text>
             <UserRectangles />
             <Text style={styles.textSpacing}>&nbsp;</Text>
@@ -144,6 +141,6 @@ const styles = StyleSheet.create({
     fontSize: 0, // Hide the text spacing, setting it to zero font size
   },
   // textStyle1: {
-    
+
   // },
 });
