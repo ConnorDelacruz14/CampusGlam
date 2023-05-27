@@ -39,6 +39,7 @@ function SearchBar() {
 }
 
 function Taskbar() {
+  const navigation = useNavigation();
   return (
     <View style={styles.taskbar}>
       <TouchableOpacity style={styles.taskbarItem}>
@@ -46,16 +47,16 @@ function Taskbar() {
         <Text style={styles.taskbarText}>Home</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.taskbarItem}>
-        <Feather name="calendar" size={24} color="#808080" />
-        <Text style={styles.taskbarText}>Appointments</Text>
+        <Feather name="search" size={24} color="#808080"/>
+        <Text style={styles.taskbarText}>Browse</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.taskbarItem}>
         <Feather name="message-circle" size={24} color="#808080" />
         <Text style={styles.taskbarText}>Messages</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.taskbarItem}>
-        <Feather name="search" size={24} color="#808080" />
-        <Text style={styles.taskbarText}>Browse</Text>
+        <Feather name="calendar" size={24} color="#808080" />
+        <Text style={styles.taskbarText}>Appointments</Text>
       </TouchableOpacity>
     </View>
   );
@@ -67,7 +68,6 @@ export default function Home() {
       <View style={styles.container}>
         <Image source={require("../icons/uci-logo.png")} style={styles.logo} />
         <SearchBar />
-        <Text style={styles.title}></Text>
         <Taskbar />
       </View>
     </TouchableWithoutFeedback>

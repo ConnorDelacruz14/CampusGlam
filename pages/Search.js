@@ -4,13 +4,11 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity,
   TouchableWithoutFeedback,
   Keyboard
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { PanGestureHandler, State } from "react-native-gesture-handler";
 
 function SearchBar() {
   const navigation = useNavigation();
@@ -43,7 +41,6 @@ export default function Home() {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
         <SearchBar />
-        <Text style={styles.title}></Text>
       </View>
     </TouchableWithoutFeedback>
   );
