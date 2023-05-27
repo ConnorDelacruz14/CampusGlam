@@ -76,7 +76,6 @@ const styles = StyleSheet.create({
       margin: 10,
       position: 'absolute',
       top: 130,
-      left: 20,
       width: 350,
     },
     input: {
