@@ -5,21 +5,26 @@ import {
   Text,
   View,
   Image,
-  TouchableOpacity,
+  Button,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
 function SearchBar() {
   const [searchText, setSearchText] = useState("");
+  const navigation = useNavigation();
 
   const handleSearch = () => {
     // handle search logic here
   };
 
+  const handlePress = () => {
+    navigation.navigate("Search");
+  };
+
   return (
-    <View style={styles.searchContainer}>
-      <Feather name="search" size={24} color="black" style={styles.icon} />
+    <View style={styles.searchContainer} >
+      <Feather name="search" size={24} color="black" style={styles.icon} onPress={handlePress}/>
       <TextInput
         style={styles.input}
         placeholder="Search CampusGlam"
