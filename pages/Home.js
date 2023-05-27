@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   Keyboard,
+  Text,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
@@ -44,10 +45,6 @@ export default function Home() {
     <View style={styles.container}>
       <View style={styles.logoContainer}>
         <Image source={require("../icons/uci-logo.png")} style={styles.logo} />
-        <SearchBar />
-
-        <NavBar />
-
         <Text>Guest</Text>
         <View
           style={{
