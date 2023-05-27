@@ -50,10 +50,37 @@ export default function Home() {
           <Image source={require("../icons/uci-logo.png")} style={styles.logo} />
         </View>
         <SearchBar />
-        <HorizontalSwipeList title="Featured" />
-        <NavBar />
+    <View style={styles.container}>
+      <View style={styles.logoContainer}>
+        <Image source={require("../icons/uci-logo.png")} style={styles.logo} />
+        <Text>Guest</Text>
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+          }}
+        >
+          <Feather
+            name="bell"
+            size={24}
+            color="#808080"
+            style={{ marginLeft: 0, marginRight: 20 }}
+          ></Feather>
+          <Feather
+            name="user"
+            size={24}
+            color="#808080"
+            style={{ marginLeft: 0, marginRight: 25 }}
+          ></Feather>
+        </View>
       </View>
-    </TouchableWithoutFeedback>
+      <SearchBar />
+      <View style={styles.swipeListsContainer}>
+        <HorizontalSwipeList title="Featured" />
+        <HorizontalSwipeList title="Nearby" />
+      </View>
+      <NavBar />
+    </View>
   );
 }
 
@@ -61,7 +88,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
     justifyContent: "center",
   },
   logoContainer: {
@@ -73,8 +99,10 @@ const styles = StyleSheet.create({
   logo: {
     width: width * 0.2,
     height: width * 0.12,
+
   },
   searchContainer: {
+    display: "flex",
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#fff",
@@ -94,12 +122,8 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
-  input: {
+  swipeListsContainer: {
     flex: 1,
-    marginLeft: 10,
-    fontSize: 16,
-  },
-  icon: {
-    marginRight: 10,
+    flexDirection: "column",
   },
 });
