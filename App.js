@@ -17,7 +17,7 @@ function MyStack() {
       <Stack.Screen 
         name="Search" 
         component={Search} 
-        options={{headerShown: true}}
+        options={{headerShown: false}}
       />
     </Stack.Navigator>
   );

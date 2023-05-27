@@ -6,15 +6,20 @@ import {
   View,
   Image,
   TouchableOpacity,
+  TouchableWithoutFeedback,
+  Keyboard
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
 function SearchBar() {
-  const [searchText, setSearchText] = useState("");
   const navigation = useNavigation();
 
   const handlePress = () => {
+    navigation.navigate("Search");
+  };
+
+  const handleFocus = () => {
     navigation.navigate("Search");
   };
 
@@ -25,8 +30,9 @@ function SearchBar() {
       <TextInput
         style={styles.input}
         placeholder="Search CampusGlam"
-        value={searchText}
-        onChangeText={setSearchText}
+        onFocus={handleFocus}
+        onPress={handlePress}
+        editable={false}
       />
     </TouchableOpacity>
   );
@@ -44,11 +50,13 @@ export default function Home() {
   // }, [navigation]);
 
   return (
-    <View style={styles.container}>
-      <Image source={require("../icons/uci-logo.png")} style={styles.logo} />
-      <SearchBar />
-      <Text style={styles.title}></Text>
-    </View>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={styles.container}>
+        <Image source={require("../icons/uci-logo.png")} style={styles.logo}/>
+        <SearchBar />
+        <Text style={styles.title}></Text>
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
 
