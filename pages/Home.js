@@ -38,29 +38,6 @@ function SearchBar() {
   );
 }
 
-function Taskbar() {
-  return (
-    <View style={styles.taskbar}>
-      <TouchableOpacity style={styles.taskbarItem}>
-        <Feather name="home" size={24} color="#808080" />
-        <Text style={styles.taskbarText}>Home</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.taskbarItem}>
-        <Feather name="calendar" size={24} color="#808080" />
-        <Text style={styles.taskbarText}>Appointments</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.taskbarItem}>
-        <Feather name="message-circle" size={24} color="#808080" />
-        <Text style={styles.taskbarText}>Messages</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.taskbarItem}>
-        <Feather name="search" size={24} color="#808080" />
-        <Text style={styles.taskbarText}>Browse</Text>
-      </TouchableOpacity>
-    </View>
-  );
-}
-
 export default function Home() {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
