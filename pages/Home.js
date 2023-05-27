@@ -39,16 +39,6 @@ function SearchBar() {
 }
 
 export default function Home() {
-  // const navigation = useNavigation();
-
-  // React.useLayoutEffect(() => {
-  //     navigation.setOptions({
-  //         headerSearchBarOptions: {
-  //             placeHolder: "Search CampusGlam",
-  //         },
-  //     });
-  // }, [navigation]);
-
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
