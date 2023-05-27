@@ -12,6 +12,7 @@ import {
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import NavBar from "../components/NavBar";
+import HorizontalSwipeList from "../components/HorizontalSwipeList";
 
 function SearchBar() {
   const navigation = useNavigation();
@@ -44,7 +45,7 @@ export default function Home() {
       <View style={styles.container}>
         <Image source={require("../icons/uci-logo.png")} style={styles.logo} />
         <SearchBar />
-        <Text style={styles.title}></Text>
+        <HorizontalSwipeList title="Featured" />
         <NavBar />
       </View>
     </TouchableWithoutFeedback>
