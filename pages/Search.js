@@ -6,12 +6,12 @@ import {
   View,
   TouchableOpacity,
   TouchableWithoutFeedback,
-  Keyboard
+  Keyboard,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { PanGestureHandler, State } from "react-native-gesture-handler";
-
+import NavBar from "../components/NavBar";
 function SearchBar() {
   const navigation = useNavigation();
   const searchInputRef = useRef(null);
@@ -65,15 +65,14 @@ const styles = StyleSheet.create({
 
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: "#FFF",
   },
   searchContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#fff',
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#fff",
     borderRadius: 30,
-    borderColor: '#ccc',
+    borderColor: "#ccc",
     borderWidth: 1,
     padding: 10,
     margin: 10,
@@ -93,7 +92,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: "bold",
-    marginVertical: 10,
   },
   rectangle: {
     width: 350,
