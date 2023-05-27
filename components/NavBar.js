@@ -44,6 +44,9 @@ export default function NavBar() {
           alignItems: "center",
           color: "#808080",
         }}
+        onPress={() => {
+          navigation.navigate("Appointments");
+        }}
       >
         <Feather name="calendar" size={24} color="#808080" />
         <Text
@@ -60,6 +63,9 @@ export default function NavBar() {
           alignItems: "center",
           color: "#808080",
         }}
+        onPress={() => {
+          navigation.navigate("Messages");
+        }}
       >
         <Feather name="message-circle" size={24} color="#808080" />
         <Text
@@ -75,6 +81,9 @@ export default function NavBar() {
         style={{
           alignItems: "center",
           color: "#808080",
+        }}
+        onPress={() => {
+          navigation.navigate("Search");
         }}
       >
         <Feather name="search" size={24} color="#808080" />
