@@ -5,8 +5,6 @@ import {
   View,
   Image,
   TouchableOpacity,
-  TouchableWithoutFeedback,
-  Keyboard,
   Text,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
@@ -14,6 +12,7 @@ import { useNavigation } from "@react-navigation/native";
 import NavBar from "../components/NavBar";
 import HorizontalSwipeList from "../components/HorizontalSwipeList";
 import ProfileIcon from "../components/ProfileIcon";
+import Option from "../components/Options";
 
 function SearchBar() {
   const navigation = useNavigation();
@@ -67,6 +66,7 @@ export default function Home() {
         </View>
       </View>
       <SearchBar />
+      <Option />
       <View style={styles.swipeListsContainer}>
         <HorizontalSwipeList title="Featured" />
         <HorizontalSwipeList title="Nearby" />
