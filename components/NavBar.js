@@ -14,10 +14,11 @@ export default function NavBar() {
         backgroundColor: "#fff",
         borderTopWidth: 1,
         borderTopColor: "#ccc",
-        height: 60,
+        height: 70,
         width: "100%",
         position: "absolute",
-        bottom: 40,
+        bottom: 0,
+        marginVertical: 15,
       }}
     >
       <TouchableOpacity

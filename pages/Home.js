@@ -11,6 +11,7 @@ import {
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import NavBar from "../components/NavBar";
+import HorizontalSwipeList from "../components/HorizontalSwipeList";
 
 function SearchBar() {
   const navigation = useNavigation();
@@ -39,14 +40,41 @@ function SearchBar() {
 
 export default function Home() {
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={styles.container}>
+    <View style={styles.container}>
+      <View style={styles.logoContainer}>
         <Image source={require("../icons/uci-logo.png")} style={styles.logo} />
         <SearchBar />
 
         <NavBar />
+
+        <Text>Guest</Text>
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+          }}
+        >
+          <Feather
+            name="bell"
+            size={24}
+            color="#808080"
+            style={{ marginLeft: 0, marginRight: 20 }}
+          ></Feather>
+          <Feather
+            name="user"
+            size={24}
+            color="#808080"
+            style={{ marginLeft: 0, marginRight: 25 }}
+          ></Feather>
+        </View>
       </View>
-    </TouchableWithoutFeedback>
+      <SearchBar />
+      <View style={styles.swipeListsContainer}>
+        <HorizontalSwipeList title="Featured" />
+        <HorizontalSwipeList title="Nearby" />
+      </View>
+      <NavBar />
+    </View>
   );
 }
 
@@ -54,24 +82,21 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
     justifyContent: "center",
   },
-  headerText: {
-    position: "absolute",
-    top: 0,
-    left: 10,
-    fontSize: 24,
-    fontWeight: "bold",
+  logoContainer: {
+    display: "flex",
+    flexDirection: "row",
+    alignContent: "center",
+    justifyContent: "space-between",
+    marginTop: 40,
   },
   logo: {
     width: 100,
     height: 60,
-    position: "absolute",
-    top: 40,
-    left: 10,
   },
   searchContainer: {
+    display: "flex",
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#fff",
@@ -80,10 +105,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     margin: 10,
-    position: "absolute",
-    top: 130,
-    left: 20,
-    width: 350,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -93,12 +114,8 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
-  input: {
+  swipeListsContainer: {
     flex: 1,
-    marginLeft: 10,
-    fontSize: 16,
-  },
-  icon: {
-    marginRight: 10,
+    flexDirection: "column",
   },
 });

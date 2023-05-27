@@ -6,12 +6,25 @@ import {
   View,
   TouchableWithoutFeedback,
   Keyboard,
+  ScrollView,
+  SafeAreaView,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { PanGestureHandler, State } from "react-native-gesture-handler";
 import NavBar from "../components/NavBar";
-function SearchBar() {
+
+class UserRectangles extends React.Component {
+  render() {
+    const { text, textStyle } = this.props;
+    return (
+      <View style={styles.rectangle}>
+        <Text style={[styles.rectangleText, textStyle]}>{text}</Text>
+      </View>
+    );
+  }
+}
+
+export default function Home() {
   const navigation = useNavigation();
   const searchInputRef = useRef(null);
 
@@ -26,8 +39,8 @@ function SearchBar() {
   }, [navigation]);
 
   return (
-    <View>
-      <View style={styles.searchContainer}>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.searchBarContainer}>
         <Feather
           name="arrow-left"
           size={24}
@@ -41,28 +54,39 @@ function SearchBar() {
           placeholder="Search CampusGlam"
         />
       </View>
-    </View>
-  );
-}
-
-export default function Search() {
-  return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={styles.container}>
-        <SearchBar />
-        <Text style={styles.title}></Text>
-        <NavBar></NavBar>
-      </View>
-    </TouchableWithoutFeedback>
+      <ScrollView
+        contentContainerStyle={styles.scrollContentContainer}
+        showsVerticalScrollIndicator={false}
+      >
+        <View style={styles.contentContainer}>
+          <Text style={styles.title}>TRENDING</Text>
+          <View style={styles.rectanglesContainer}>
+            <UserRectangles text="Lash Salon" textStyle={styles.textStyle2} />
+            <Text style={styles.textSpacing}>&nbsp;</Text>
+            <UserRectangles />
+            <Text style={styles.textSpacing}>&nbsp;</Text>
+            <UserRectangles />
+            <Text style={styles.textSpacing}>&nbsp;</Text>
+            <UserRectangles />
+            <Text style={styles.textSpacing}>&nbsp;</Text>
+            <UserRectangles />
+            <Text style={styles.textSpacing}>&nbsp;</Text>
+            <UserRectangles />
+            <Text style={styles.textSpacing}>&nbsp;</Text>
+            <UserRectangles />
+          </View>
+        </View>
+      </ScrollView>
+      <NavBar />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FFF",
   },
-  searchContainer: {
+  searchBarContainer: {
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#fff",
@@ -70,10 +94,8 @@ const styles = StyleSheet.create({
     borderColor: "#ccc",
     borderWidth: 1,
     padding: 10,
-    margin: 10,
-    position: "absolute",
-    top: 50,
-    width: 400,
+    marginHorizontal: 40,
+    marginTop: 10,
   },
   icon: {
     marginRight: 10,
@@ -83,8 +105,42 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     fontSize: 16,
   },
+  scrollContentContainer: {
+    flexGrow: 1,
+    paddingTop: 20,
+    paddingBottom: 60,
+    paddingHorizontal: 10,
+  },
+  contentContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
   title: {
     fontSize: 24,
     fontWeight: "bold",
+    marginVertical: 10,
   },
+  rectanglesContainer: {
+    alignItems: "center",
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  rectangle: {
+    width: 350,
+    height: 160,
+    backgroundColor: "white",
+    borderRadius: 10,
+    marginBottom: 65,
+  },
+  rectangleText: {
+    textAlign: "center",
+  },
+  textSpacing: {
+    height: 10,
+    fontSize: 0, // Hide the text spacing, setting it to zero font size
+  },
+  // textStyle1: {
+
+  // },
 });
