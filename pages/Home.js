@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
-import { TextInput, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
-import { Feather } from '@expo/vector-icons';
+import React, { useState } from "react";
+import {
+  TextInput,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+} from "react-native";
+import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
 function SearchBar() {
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState("");
 
   const handleSearch = () => {
     // handle search logic here
@@ -22,26 +29,26 @@ function SearchBar() {
       />
     </View>
   );
-};
+}
 
 export default function Home() {
-    // const navigation = useNavigation();
+  // const navigation = useNavigation();
 
-    // React.useLayoutEffect(() => {
-    //     navigation.setOptions({
-    //         headerSearchBarOptions: {
-    //             placeHolder: "Search CampusGlam",
-    //         },
-    //     });
-    // }, [navigation]);
+  // React.useLayoutEffect(() => {
+  //     navigation.setOptions({
+  //         headerSearchBarOptions: {
+  //             placeHolder: "Search CampusGlam",
+  //         },
+  //     });
+  // }, [navigation]);
 
-    return (
-        <View style={styles.container}>
-            <Image source={require('../icons/uci-logo.png')} style={styles.logo} />
-            <SearchBar />
-            <Text style={styles.title}></Text>
-        </View>
-    );
+  return (
+    <View style={styles.container}>
+      <Image source={require("../icons/uci-logo.png")} style={styles.logo} />
+      <SearchBar />
+      <Text style={styles.title}></Text>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -76,6 +83,7 @@ const styles = StyleSheet.create({
       margin: 10,
       position: 'absolute',
       top: 130,
+      left: 20,
       width: 350,
     },
     input: {
