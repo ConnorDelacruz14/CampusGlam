@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     margin: 10,
     position: 'absolute',
     top: 50,
-    width: 350,
+    width: 400,
   },
   icon: {
     marginRight: 10,
