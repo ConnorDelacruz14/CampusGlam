@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import NavBar from "../components/NavBar";
 
 function SearchBar() {
   const navigation = useNavigation();
@@ -24,7 +25,6 @@ function SearchBar() {
   };
 
   return (
-    // Hello World
     <TouchableOpacity style={styles.searchContainer} onPress={handlePress}>
       <Feather name="search" size={24} color="#808080" style={styles.icon} />
       <TextInput
@@ -38,29 +38,6 @@ function SearchBar() {
   );
 }
 
-function Taskbar() {
-  return (
-    <View style={styles.taskbar}>
-      <TouchableOpacity style={styles.taskbarItem}>
-        <Feather name="home" size={24} color="#808080" />
-        <Text style={styles.taskbarText}>Home</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.taskbarItem}>
-        <Feather name="calendar" size={24} color="#808080" />
-        <Text style={styles.taskbarText}>Appointments</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.taskbarItem}>
-        <Feather name="message-circle" size={24} color="#808080" />
-        <Text style={styles.taskbarText}>Messages</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.taskbarItem}>
-        <Feather name="search" size={24} color="#808080" />
-        <Text style={styles.taskbarText}>Browse</Text>
-      </TouchableOpacity>
-    </View>
-  );
-}
-
 export default function Home() {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -68,34 +45,13 @@ export default function Home() {
         <Image source={require("../icons/uci-logo.png")} style={styles.logo} />
         <SearchBar />
         <Text style={styles.title}></Text>
-        <Taskbar />
+        <NavBar />
       </View>
     </TouchableWithoutFeedback>
   );
 }
 
 const styles = StyleSheet.create({
-  taskbar: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "center",
-    backgroundColor: "#fff",
-    borderTopWidth: 1,
-    borderTopColor: "#ccc",
-    height: 60,
-    width: "100%",
-    position: "absolute",
-    bottom: 40,
-  },
-  taskbarItem: {
-    alignItems: "center",
-    color: "#808080",
-  },
-
-  taskbarText: {
-    fontSize: 12,
-    color: "#808080", // Updated text color to #808080
-  },
   container: {
     flex: 1,
     backgroundColor: "#fff",
