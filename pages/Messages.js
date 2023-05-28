@@ -56,11 +56,11 @@ const Page = () => {
     setShowDropdown(text.length > 0);
   };
 
-  useEffect(() => {
-    if (searchInputRef.current && navigation.isFocused()) {
-      searchInputRef.current.focus();
-    }
-  }, [navigation]);
+  // useEffect(() => {
+  //   if (searchInputRef.current && navigation.isFocused() && !searchInputRef.current.isFocused()) {
+  //     searchInputRef.current.focus();
+  //   }
+  // }, [navigation]);
 
   return (
     <SafeAreaView style={styles.container}>
