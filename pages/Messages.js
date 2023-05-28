@@ -57,11 +57,11 @@ const Page = () => {
     setShowDropdown(text.length > 0);
   };
 
-  useEffect(() => {
-    if (searchInputRef.current && navigation.isFocused()) {
-      searchInputRef.current.focus();
-    }
-  }, [navigation]);
+  // useEffect(() => {
+  //   if (searchInputRef.current && navigation.isFocused() && !searchInputRef.current.isFocused()) {
+  //     searchInputRef.current.focus();
+  //   }
+  // }, [navigation]);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
   },
   dropdown: {
     position: "absolute",
-    top: 48,
+    top: 70,
     left: 16,
     right: 16,
     maxHeight: 200,
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   dropdownItem: {
-    paddingHorizontal: 16,
+    paddingHorizontal: 10,
     paddingVertical: 12,
   },
   profileCardContainer: {

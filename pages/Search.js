@@ -129,6 +129,8 @@ export default function Home() {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Text style={styles.browseText}>Browse</Text>
+
       <View style={styles.searchBarContainer}>
         <Feather
           name="arrow-left"
@@ -137,6 +139,7 @@ export default function Home() {
           style={styles.icon}
           onPress={handlePress}
         />
+        {/* <Text style={styles.browseText}>Browse</Text> */}
         <TextInput
           ref={searchInputRef}
           style={styles.input}
@@ -204,6 +207,7 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#FFF",
   },
   searchBarContainer: {
     flexDirection: "row",
@@ -219,9 +223,19 @@ const styles = StyleSheet.create({
   icon: {
     marginRight: 10,
   },
+  browseText: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginRight: 20,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 20,
+    paddingTop: 16,
+    paddingBottom: 8,
+  },
   input: {
     flex: 1,
-    marginLeft: 10,
     fontSize: 16,
   },
   recentSearchesContainer: {
@@ -248,7 +262,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   title: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: "bold",
     marginVertical: 10,
   },
