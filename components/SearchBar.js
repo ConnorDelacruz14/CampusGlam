@@ -15,7 +15,7 @@ const SearchBar = (props) => {
       <Feather name="search" size={24} color="#808080" style={styles.icon} />
       <TextInput
         style={styles.input}
-        placeholder="Search CampusGlam"
+        placeholder="   Search CampusGlam"
         onFocus={handlePress}
         editable={props.can_edit}
       />
@@ -33,7 +33,7 @@ const styles = {
     borderColor: "#ccc",
     borderWidth: 1,
     padding: 10,
-    margin: 10,
+    margin: 28,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,

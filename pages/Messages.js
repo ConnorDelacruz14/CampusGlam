@@ -56,18 +56,6 @@ const Page = () => {
     setShowDropdown(text.length > 0);
   };
 
-  const renderDropdownItem = ({ item }) => (
-    <TouchableOpacity
-      style={styles.dropdownItem}
-      onPress={() => {
-        setSearchText(item.name);
-        setShowDropdown(false);
-      }}
-    >
-      <Text>{item.name}</Text>
-    </TouchableOpacity>
-  );
-
   useEffect(() => {
     if (searchInputRef.current && navigation.isFocused()) {
       searchInputRef.current.focus();
@@ -76,14 +64,10 @@ const Page = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.title}>Messages</Text>
+      </View>
       <View style={styles.searchContainer}>
-        <Feather
-          name="arrow-left"
-          size={24}
-          color="black"
-          style={styles.icon}
-          onPress={() => navigation.navigate("Home")}
-        />
         <TextInput
           ref={searchInputRef}
           style={styles.searchInput}
@@ -97,7 +81,14 @@ const Page = () => {
           <FlatList
             style={styles.dropdown}
             data={data}
-            renderItem={renderDropdownItem}
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                style={styles.dropdownItem}
+                onPress={() => setSearchText(item.name)}
+              >
+                <Text>{item.name}</Text>
+              </TouchableOpacity>
+            )}
             keyExtractor={(item) => item.id.toString()}
           />
         )}
@@ -125,6 +116,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#FFF",
+  },
+  header: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 16,
+    paddingTop: 16,
+    paddingBottom: 8,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
   },
   searchContainer: {
     flexDirection: "row",
@@ -162,6 +165,7 @@ const styles = StyleSheet.create({
   profileCardContainer: {
     paddingHorizontal: 16,
     paddingBottom: 16,
+    marginBottom: 200, // Adjust this value as needed
   },
   profileButton: {
     marginBottom: 16,
