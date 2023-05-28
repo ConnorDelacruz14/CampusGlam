@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
   },
   dropdown: {
     position: "absolute",
-    top: 48,
+    top: 70,
     left: 16,
     right: 16,
     maxHeight: 200,
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   dropdownItem: {
-    paddingHorizontal: 16,
+    paddingHorizontal: 10,
     paddingVertical: 12,
   },
   profileCardContainer: {
