@@ -4,7 +4,6 @@ import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import NavBar from "../components/NavBar";
 import HorizontalSwipeList from "../components/HorizontalSwipeList";
-import ProfileIcon from "../components/ProfileIcon";
 import Option from "../components/Options";
 import SearchBar from "../components/SearchBar";
 
@@ -42,10 +41,38 @@ export default function Home() {
       <ScrollView>
         <Option />
         <View style={styles.swipeListsContainer}>
-          <HorizontalSwipeList title="Featured" />
-          <HorizontalSwipeList title="Nearby" />
-          <ProfileIcon name="Connor" />
-          <ProfileIcon name="Matthew" />
+          <HorizontalSwipeList
+            title="Hall Of Fame"
+            data={[
+              { id: "1", image: require("../assets/person1.jpg") },
+              { id: "2", image: require("../assets/zendaya.jpeg") },
+              { id: "3", image: require("../assets/person3.jpg") },
+              { id: "4", image: require("../assets/lizzo.jpg") },
+              { id: "5", image: require("../assets/person5.jpg") },
+            ]}
+          />
+          <HorizontalSwipeList
+            title="Nearby Stylists"
+            data={[
+              { id: "1", image: require("../assets/person2.jpg") },
+              { id: "2", image: require("../assets/taylor_swift.jpg") },
+              { id: "3", image: require("../assets/lizzo.jpg") },
+              { id: "4", image: require("../assets/person4.jpg") },
+              { id: "5", image: require("../assets/person7.jpg") },
+            ]}
+          />
+          <HorizontalSwipeList
+            title="Past Stylists"
+            pictureSize={80}
+            data={[
+              { id: "1", image: require("../assets/person1.jpg") },
+              { id: "2", image: require("../assets/person7.jpg") },
+              { id: "3", image: require("../assets/person3.jpg") },
+              { id: "4", image: require("../assets/person4.jpg") },
+              { id: "5", image: require("../assets/person7.jpg") },
+            ]}
+          />
+          <Text>{"\n\n\n\n"}</Text>
         </View>
       </ScrollView>
       <NavBar />
@@ -58,6 +85,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     justifyContent: "center",
+    padding: 10,
   },
   logoContainer: {
     display: "flex",
@@ -67,8 +95,8 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
   logo: {
-    width: 100,
-    height: 60,
+    width: 60,
+    height: 40,
   },
   swipeListsContainer: {
     flex: 1,
