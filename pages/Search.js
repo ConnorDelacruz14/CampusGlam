@@ -159,7 +159,7 @@ export default function Home() {
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.contentContainer}>
-          <Text style={styles.title}>TRENDING</Text>
+          <Text style={styles.title}>Trending</Text>
           <View style={styles.rectanglesContainer}>
             <UserRectangles
               text="FADED BARBER - $45"
@@ -226,7 +226,7 @@ const styles = StyleSheet.create({
   },
   recentSearchesContainer: {
     paddingHorizontal: 50,
-    marginTop: 10,
+    marginTop: 1,
   },
   recentSearchItem: {
     paddingVertical: 15,
