@@ -166,7 +166,7 @@ export default function Home() {
           <Text style={styles.title}>Trending</Text>
           <View style={styles.rectanglesContainer}>
             <UserRectangles
-              text="FADED BARBER - $45"
+              text="Rayyaan's Cuts - $45"
               imageSource={require("../assets/person1.jpg")}
               name="Rayyaan Nadeem"
             />
@@ -176,31 +176,33 @@ export default function Home() {
               name="Matthew Phan"
             />
             <UserRectangles
-              text="NAIL TECH - $22.50"
-              imageSource={require("../assets/person3.jpg")}
+              text="DAPPER FADES - $22.50"
+              imageSource={require("../assets/person4.jpg")}
               name="Mike Johnson"
             />
             <UserRectangles
-              text="YOGA SESSION - $15/HR"
-              imageSource={require("../assets/person4.jpg")}
+              text="FACIALS & WAX - $15/HR"
+              imageSource={require("../assets/person3.jpg")}
               name="Sally Harris"
             />
             <UserRectangles
-              text="BOXING - $25"
+              text="ASHLEY'S SALON - $25"
               imageSource={require("../assets/person5.jpg")}
-              name="Kaushal Saleem"
+              name="Ashley Gomez"
             />
             <UserRectangles
-              text="CAR WASH - $10/HR"
+              text="Ben's Bibles - $10/HR"
               imageSource={require("../assets/Kaushal.jpg")}
+              name = "Ben Henry"
             />
             <UserRectangles
-              text="Top Fitness Tra - $10"
+              text="FourFitness - $10"
               imageSource={require("../assets/k_seelam_professional.jpeg")}
             />
             <UserRectangles
-              text="MAKEUP ARTIST - $20"
+              text="Linda's Lashes - $20"
               imageSource={require("../assets/zendaya.jpeg")}
+              name = "Linda Anderson"
             />
           </View>
         </View>
