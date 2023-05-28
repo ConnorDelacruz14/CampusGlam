@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Search from "./pages/Search";
 import Appointments from "./pages/Appointments";
 import Messages from "./pages/Messages";
+import Chat from "./pages/Chat";
 import Profile from "./pages/Profile";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
@@ -31,6 +32,11 @@ function MyStack() {
       <Stack.Screen
         name="Messages"
         component={Messages}
+        options={{ headerShown: true }}
+      />
+      <Stack.Screen
+        name="Chat"
+        component={Chat}
         options={{ headerShown: true }}
       />
       <Stack.Screen
