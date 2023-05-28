@@ -21,6 +21,12 @@ class Profile extends Component {
     this.animation = new Animated.Value(1);
     this.textInputRef = createRef();
     this.scrollViewRef = createRef();
+    this.name = this.props.route.params.name;
+    this.hours = this.props.route.params.hours;
+    this.specialties = this.props.route.params.specialties;
+    this.highlights = this.props.route.params.highlights;
+    this.id = this.props.route.params.id;
+    this.picture = this.props.route.params.picture;
   }
 
   handlePressIn = () => {
@@ -48,11 +54,68 @@ class Profile extends Component {
   };
 
   render() {
-    const { navigation } = this.props;
+    console.log("rendered!", this.id);
     const { animation } = this;
     const animatedStyle = {
       transform: [{ scale: animation }],
     };
+    if (this.id === "1") {
+      this.picture = require("../assets/person1.jpg");
+      this.name = "Rayyaan Nadeem";
+      this.hours = "Monday-Thursday 5pm - 8pm";
+      this.specialties = "Men's haircuts, fading";
+      this.highlights = "Quick and to the point, talkative";
+    } else if (this.id === "2") {
+      this.picture = require("../assets/person2.jpg");
+      this.name = "Matthew Phan";
+      this.hours = "By appointment only";
+      this.specialties = "Men's haircuts";
+      this.highlights = "Caring, funny, efficient";
+    } else if (this.id === "3") {
+      this.picture = require("../assets/person3.jpg");
+      this.name = "Jerome Parker";
+      this.hours = "By appointment only";
+      this.specialties = "Men's haircuts";
+      this.highlights = "Caring, funny, efficient";
+    } else if (this.id === "4") {
+      this.picture = require("../assets/person4.jpg");
+      this.name = "Sally Allen";
+      this.hours = "Mondays-Sundays 7pm-9pm";
+      this.specialties = "Women's haircuts";
+      this.highlights = "Caring, funny, efficient";
+    } else if (this.id === "5") {
+      this.picture = require("../assets/person5.jpg");
+      this.name = "Rebecca Nadeem";
+      this.hours = "By appointment only";
+      this.specialties = "Women's beauty";
+      this.highlights = "Caring, funny, efficient";
+    } else if (this.id === "6") {
+      this.picture = require("../assets/person6.jpg");
+    } else if (this.id === "7") {
+      this.picture = require("../assets/person7.jpg");
+      this.name = "Daniel Craig";
+      this.hours = "By appointment only";
+      this.specialties = "Men's haircuts";
+      this.highlights = "Caring, funny, efficient";
+    } else if (this.id === "8") {
+      this.picture = require("../assets/zendaya.jpeg");
+      this.name = "Zendaya";
+      this.hours = "By appointment only";
+      this.specialties = "Men's haircuts";
+      this.highlights = "Caring, funny, efficient";
+    } else if (this.id === "9") {
+      this.picture = require("../assets/lizzo.jpg");
+      this.name = "Lizzo";
+      this.hours = "By appointment only";
+      this.specialties = "Nails and Men's haircuts";
+      this.highlights = "Singing and dancing while cutting hair";
+    } else if (this.id === "10") {
+      this.picture = require("../assets/taylor_swift.jpg");
+      this.name = "Taylor Swift";
+      this.hours = "By appointment only";
+      this.specialties = "Singing and Beauty";
+      this.highlights = "Easygoing, cheerful";
+    }
 
     return (
       <View style={styles.container}>
@@ -63,11 +126,8 @@ class Profile extends Component {
         >
           <View style={styles.header}>
             <View style={styles.profileContainer}>
-              <Image
-                source={require("../assets/person2.jpg")}
-                style={styles.pfp}
-              />
-              <Text style={styles.profileName}>Matthew Phan</Text>
+              <Image source={this.picture} style={styles.pfp} />
+              <Text style={styles.profileName}>{this.name}</Text>
             </View>
             <View>
               <TouchableOpacity
@@ -91,19 +151,28 @@ class Profile extends Component {
             <Text> | 119 Reviews </Text>
           </View>
 
-          <HorizontalSwipeList title="Photos"></HorizontalSwipeList>
+          <HorizontalSwipeList
+            title="Photos"
+            data={[
+              { id: "1", image: require("../assets/person1.jpg") },
+              { id: "2", image: require("../assets/zendaya.jpeg") },
+              { id: "3", image: require("../assets/person3.jpg") },
+              { id: "4", image: require("../assets/lizzo.jpg") },
+              { id: "5", image: require("../assets/person5.jpg") },
+            ]}
+          ></HorizontalSwipeList>
 
           <View style={styles.infoContainer}>
             <Text style={{ fontWeight: "bold", fontSize: 18 }}>Info{"\n"}</Text>
-            <Text>Hours: Only By Appointments</Text>
+            <Text>Hours: {this.hours}</Text>
             <Text>Mask Required: Yes</Text>
-            <Text>Specialties: Hairstyles for guys</Text>
+            <Text>Specialties: {this.specialties}</Text>
           </View>
           <View style={styles.highlightsContainer}>
             <Text style={{ fontWeight: "bold", fontSize: 18 }}>
               Highlights{"\n"}
             </Text>
-            <Text>Polite, professional, caring, etc.</Text>
+            <Text>{this.highlights}</Text>
           </View>
           <View style={styles.reviewsContainer}>
             <Text style={{ fontWeight: "bold", fontSize: 18 }}>

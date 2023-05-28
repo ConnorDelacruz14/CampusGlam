@@ -32,7 +32,13 @@ export default function Home() {
             color="#808080"
             style={{ marginLeft: 0, marginRight: 25 }}
             onPress={() => {
-              navigation.navigate("Profile");
+              navigation.navigate("Profile", {
+                name: "Matthew Phan",
+                hours: "By appointment only",
+                specialties: "Men's haircuts",
+                highlights: "Caring, funny, efficient",
+                id: 2,
+              });
             }}
           ></Feather>
         </View>
@@ -45,20 +51,20 @@ export default function Home() {
             title="Hall Of Fame"
             data={[
               { id: "1", image: require("../assets/person1.jpg") },
-              { id: "2", image: require("../assets/zendaya.jpeg") },
+              { id: "8", image: require("../assets/zendaya.jpeg") },
               { id: "3", image: require("../assets/person3.jpg") },
-              { id: "4", image: require("../assets/lizzo.jpg") },
+              { id: "9", image: require("../assets/lizzo.jpg") },
               { id: "5", image: require("../assets/person5.jpg") },
             ]}
           />
           <HorizontalSwipeList
             title="Nearby Stylists"
             data={[
-              { id: "1", image: require("../assets/person2.jpg") },
-              { id: "2", image: require("../assets/taylor_swift.jpg") },
-              { id: "3", image: require("../assets/lizzo.jpg") },
+              { id: "2", image: require("../assets/person2.jpg") },
+              { id: "10", image: require("../assets/taylor_swift.jpg") },
+              { id: "9", image: require("../assets/lizzo.jpg") },
               { id: "4", image: require("../assets/person4.jpg") },
-              { id: "5", image: require("../assets/person7.jpg") },
+              { id: "7", image: require("../assets/person7.jpg") },
             ]}
           />
           <HorizontalSwipeList
@@ -66,10 +72,10 @@ export default function Home() {
             pictureSize={80}
             data={[
               { id: "1", image: require("../assets/person1.jpg") },
-              { id: "2", image: require("../assets/person7.jpg") },
+              { id: "7", image: require("../assets/person7.jpg") },
               { id: "3", image: require("../assets/person3.jpg") },
               { id: "4", image: require("../assets/person4.jpg") },
-              { id: "5", image: require("../assets/person7.jpg") },
+              { id: "9", image: require("../assets/lizzo.jpg") },
             ]}
           />
           <Text>{"\n\n\n\n"}</Text>

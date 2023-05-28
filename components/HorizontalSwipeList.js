@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, useRef } from "react";
 import {
   View,
   FlatList,
@@ -9,37 +9,36 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { PanGestureHandler, State } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/native";
 
-class HorizontalSwipeList extends Component {
-  constructor(props) {
-    super(props);
-    this.translateX = new Animated.Value(0);
-    this.previousTranslationX = 0;
-    this.listWidth = 0;
-    this.itemWidth = this.props.pictureSize || 120; // Default size is 120
-    this.containerWidth = 0;
-    this.data = this.props.data;
-  }
+const HorizontalSwipeList = ({ title, data, pictureSize }) => {
+  const [translateX] = useState(new Animated.Value(0));
+  const previousTranslationX = useRef(0);
+  const [listWidth, setListWidth] = useState(0);
+  const itemWidth = pictureSize || 120;
+  const containerWidth = useRef(0);
+  const navigation = useNavigation();
 
-  handleLayout = (event) => {
-    this.listWidth = event.nativeEvent.layout.width;
+  const handleLayout = (event) => {
+    setListWidth(event.nativeEvent.layout.width);
   };
 
-  handleGestureEvent = ({ nativeEvent }) => {
-    const translationX = this.previousTranslationX + nativeEvent.translationX;
-    const minTranslateX = -this.containerWidth + this.itemWidth;
+  const handleGestureEvent = ({ nativeEvent }) => {
+    const translationX =
+      previousTranslationX.current + nativeEvent.translationX;
+    const minTranslateX = -containerWidth.current + itemWidth;
     const maxTranslateX = 0;
-    this.translateX.setValue(
+    translateX.setValue(
       Math.max(Math.min(translationX, maxTranslateX), minTranslateX)
     );
   };
 
-  handleStateChange = ({ nativeEvent }) => {
+  const handleStateChange = ({ nativeEvent }) => {
     if (nativeEvent.state === State.END) {
       const { translationX } = nativeEvent;
-      this.previousTranslationX += translationX;
-      Animated.spring(this.translateX, {
-        toValue: this.previousTranslationX,
+      previousTranslationX.current += translationX;
+      Animated.spring(translateX, {
+        toValue: previousTranslationX.current,
         useNativeDriver: true,
         bounciness: 0,
         velocity: translationX / 100,
@@ -47,26 +46,34 @@ class HorizontalSwipeList extends Component {
     }
   };
 
-  renderListItem = ({ item }) => {
+  const renderListItem = ({ item }) => {
     const animatedStyle = {
-      transform: [{ translateX: this.translateX }],
+      transform: [{ translateX }],
     };
 
     return (
       <View style={styles.itemContainer}>
         <PanGestureHandler
-          onGestureEvent={this.handleGestureEvent}
-          onHandlerStateChange={this.handleStateChange}
+          onGestureEvent={handleGestureEvent}
+          onHandlerStateChange={handleStateChange}
         >
           <Animated.View style={[styles.itemContent, animatedStyle]}>
             <TouchableOpacity
-              onPress={() => console.log("Pressed item ID:", item.id)}
+              onPress={() => {
+                navigation.navigate("Profile", {
+                  name: "",
+                  hours: "",
+                  specialties: "",
+                  highlights: "",
+                  id: item.id,
+                });
+              }}
             >
               <Image
                 source={item.image}
                 style={[
                   styles.itemImage,
-                  { width: this.itemWidth, height: this.itemWidth },
+                  { width: itemWidth, height: itemWidth },
                 ]}
               />
             </TouchableOpacity>
@@ -76,30 +83,28 @@ class HorizontalSwipeList extends Component {
     );
   };
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.listTitle}>{this.props.title}</Text>
-        <View
-          style={styles.listContainer}
-          onLayout={(event) => {
-            this.containerWidth = event.nativeEvent.layout.width;
-          }}
-        >
-          <FlatList
-            data={this.data}
-            renderItem={this.renderListItem}
-            keyExtractor={(item) => item.id}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            bounces={false}
-            onLayout={this.handleLayout}
-          />
-        </View>
+  return (
+    <View style={styles.container}>
+      <Text style={styles.listTitle}>{title}</Text>
+      <View
+        style={styles.listContainer}
+        onLayout={(event) => {
+          containerWidth.current = event.nativeEvent.layout.width;
+        }}
+      >
+        <FlatList
+          data={data}
+          renderItem={renderListItem}
+          keyExtractor={(item) => item.id}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          bounces={false}
+          onLayout={handleLayout}
+        />
       </View>
-    );
-  }
-}
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
