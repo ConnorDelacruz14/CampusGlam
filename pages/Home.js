@@ -1,45 +1,15 @@
-import React, { useState } from "react";
-import {
-  TextInput,
-  StyleSheet,
-  View,
-  Image,
-  TouchableOpacity,
-  Text,
-} from "react-native";
+import React from "react";
+import { StyleSheet, View, Image, Text, ScrollView } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import NavBar from "../components/NavBar";
 import HorizontalSwipeList from "../components/HorizontalSwipeList";
 import ProfileIcon from "../components/ProfileIcon";
 import Option from "../components/Options";
-
-function SearchBar() {
-  const navigation = useNavigation();
-
-  const handlePress = () => {
-    navigation.navigate("Search");
-  };
-
-  const handleFocus = () => {
-    navigation.navigate("Search");
-  };
-
-  return (
-    <TouchableOpacity style={styles.searchContainer} onPress={handlePress}>
-      <Feather name="search" size={24} color="#808080" style={styles.icon} />
-      <TextInput
-        style={styles.input}
-        placeholder="Search CampusGlam"
-        onFocus={handleFocus}
-        onPress={handlePress}
-        editable={false}
-      />
-    </TouchableOpacity>
-  );
-}
+import SearchBar from "../components/SearchBar";
 
 export default function Home() {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
@@ -62,17 +32,22 @@ export default function Home() {
             size={24}
             color="#808080"
             style={{ marginLeft: 0, marginRight: 25 }}
+            onPress={() => {
+              navigation.navigate("Profile");
+            }}
           ></Feather>
         </View>
       </View>
-      <SearchBar />
-      <Option />
-      <View style={styles.swipeListsContainer}>
-        <HorizontalSwipeList title="Featured" />
-        <HorizontalSwipeList title="Nearby" />
-        <ProfileIcon name="Connor" />
-        <ProfileIcon name="Matthew" />
-      </View>
+      <SearchBar can_edit={false} />
+      <ScrollView>
+        <Option />
+        <View style={styles.swipeListsContainer}>
+          <HorizontalSwipeList title="Featured" />
+          <HorizontalSwipeList title="Nearby" />
+          <ProfileIcon name="Connor" />
+          <ProfileIcon name="Matthew" />
+        </View>
+      </ScrollView>
       <NavBar />
     </View>
   );
@@ -94,25 +69,6 @@ const styles = StyleSheet.create({
   logo: {
     width: 100,
     height: 60,
-  },
-  searchContainer: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "#fff",
-    borderRadius: 30,
-    borderColor: "#ccc",
-    borderWidth: 1,
-    padding: 10,
-    margin: 10,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.15,
-    shadowRadius: 3.84,
-    elevation: 5,
   },
   swipeListsContainer: {
     flex: 1,
