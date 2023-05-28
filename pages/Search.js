@@ -186,15 +186,15 @@ export default function Home() {
             />
             <UserRectangles
               text="CAR WASH - $10/HR"
-              imageSource={require("../assets/splash.png")}
+              imageSource={require("../assets/Kaushal.jpg")}
             />
             <UserRectangles
-              text="ART CLASS - $10"
-              imageSource={require("../assets/dollar-sign.png")}
+              text="Top Fitness Tra - $10"
+              imageSource={require("../assets/k_seelam_professional.jpeg")}
             />
             <UserRectangles
               text="MAKEUP ARTIST - $20"
-              imageSource={require("../assets/icon.png")}
+              imageSource={require("../assets/zendaya.jpeg")}
             />
           </View>
         </View>
