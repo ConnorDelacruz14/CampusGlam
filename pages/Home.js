@@ -26,6 +26,9 @@ export default function Home() {
             size={24}
             color="#808080"
             style={{ marginLeft: 0, marginRight: 20 }}
+            onPress={() => {
+              navigation.navigate("Chat");
+            }}
           ></Feather>
           <Feather
             name="user"
