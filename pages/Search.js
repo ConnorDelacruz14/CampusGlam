@@ -8,33 +8,54 @@ import {
   ScrollView,
   SafeAreaView,
   TouchableOpacity,
+  FlatList,
 } from "react-native";
 import { Feather, AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import NavBar from "../components/NavBar";
 
-const UserRectangles = ({ text, textStyle, subText }) => {
+const UserRectangles = ({
+  text,
+  textStyle,
+  subText,
+  imageSource,
+  welcomeText,
+  welcomeTextStyle,
+}) => {
   const navigation = useNavigation();
 
   return (
-    <View style={styles.rectangleContainer}>
+    <TouchableOpacity
+      style={styles.rectangleContainer}
+      onPress={() => navigation.navigate("Details")} // Replace "Details" with the appropriate screen name
+    >
       <View style={styles.rectangle}>
-        <View style={styles.textContainer}>
-          <Text style={[styles.rectangleText, styles.textBottomLeft, textStyle]}>
-            {text}
-          </Text>
-        </View>
-        <View style={styles.subTextContainer}>
-          <Text style={styles.subText}>{subText}</Text>
-        </View>
+        <Image source={imageSource} style={styles.rectangleImage} />
       </View>
-      <TouchableOpacity style={styles.calendarButton} onPress={() => navigation.navigate("Appointments")}>
-        <Image source={require("../assets/calendar.png")} style={styles.calendarImage} />
+      <Text style={[styles.rectangleText, styles.textBottomLeft, textStyle]}>
+        {text}
+      </Text>
+      {welcomeText && (
+        <Text style={[styles.welcomeText, welcomeTextStyle]}>
+          {welcomeText}
+        </Text>
+      )}
+      <View style={styles.subTextContainer}>
+        <Text style={styles.subText}>{subText}</Text>
+      </View>
+      <TouchableOpacity
+        style={styles.calendarButton}
+        onPress={() => navigation.navigate("Appointments")}
+      >
+        <Image
+          source={require("../assets/calendar.png")}
+          style={styles.calendarImage}
+        />
       </TouchableOpacity>
       <View style={styles.rating}>
         <Rating />
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -72,6 +93,23 @@ const Rating = () => {
 export default function Home() {
   const navigation = useNavigation();
   const searchInputRef = React.useRef(null);
+  const [recentSearches, setRecentSearches] = useState([
+    "Faded Barber",
+    "Hair Stylist",
+    "Nail Tech",
+    "Boxing Sessions",
+    "Yoga Sessions",
+    "Other",
+  ]);
+  const [isSearchBarFocused, setIsSearchBarFocused] = useState(false);
+
+  const handleSearchBarFocus = () => {
+    setIsSearchBarFocused(true);
+  };
+
+  const handleSearchBarBlur = () => {
+    setIsSearchBarFocused(false);
+  };
 
   const handlePress = () => {
     navigation.navigate("Home");
@@ -82,6 +120,12 @@ export default function Home() {
       searchInputRef.current.focus();
     }
   }, [navigation]);
+
+  const renderRecentSearchItem = ({ item }) => (
+    <TouchableOpacity style={styles.recentSearchItem}>
+      <Text style={styles.recentSearchText}>{item}</Text>
+    </TouchableOpacity>
+  );
 
   return (
     <SafeAreaView style={styles.container}>
@@ -97,8 +141,19 @@ export default function Home() {
           ref={searchInputRef}
           style={styles.input}
           placeholder="Search CampusGlam"
+          onFocus={handleSearchBarFocus} // Add this onFocus event handler
+          onBlur={handleSearchBarBlur} // Add this onBlur event handler
         />
       </View>
+      {isSearchBarFocused && ( // Render the FlatList only if the search bar is focused
+        <FlatList
+          data={recentSearches}
+          renderItem={renderRecentSearchItem}
+          keyExtractor={(item, index) => index.toString()}
+          contentContainerStyle={styles.recentSearchesContainer}
+          keyboardShouldPersistTaps="always"
+        />
+      )}
       <ScrollView
         contentContainerStyle={styles.scrollContentContainer}
         showsVerticalScrollIndicator={false}
@@ -106,14 +161,38 @@ export default function Home() {
         <View style={styles.contentContainer}>
           <Text style={styles.title}>TRENDING</Text>
           <View style={styles.rectanglesContainer}>
-            <UserRectangles text="FADED BARBER - $45 " />
-            <UserRectangles text="HAIR STYLIST - $20" />
-            <UserRectangles text="NAIL TECH - $22.50"/>
-            <UserRectangles text="YOGA SESSION - $15/HR "/>
-            <UserRectangles text="BOXING - $25"/>
-            <UserRectangles text="CAR WASH - $10/HR"/>
-            <UserRectangles text="ART CLASS - $10"/>
-            <UserRectangles text="MAKEUP ARTIST - $20"/>
+            <UserRectangles
+              text="FADED BARBER - $45"
+              imageSource={require("../assets/person1.jpg")}
+            />
+            <UserRectangles
+              text="HAIR STYLIST - $20"
+              imageSource={require("../assets/person2.jpg")}
+            />
+            <UserRectangles
+              text="NAIL TECH - $22.50"
+              imageSource={require("../assets/person3.jpg")}
+            />
+            <UserRectangles
+              text="YOGA SESSION - $15/HR"
+              imageSource={require("../assets/person4.jpg")}
+            />
+            <UserRectangles
+              text="BOXING - $25"
+              imageSource={require("../assets/person5.jpg")}
+            />
+            <UserRectangles
+              text="CAR WASH - $10/HR"
+              imageSource={require("../assets/splash.png")}
+            />
+            <UserRectangles
+              text="ART CLASS - $10"
+              imageSource={require("../assets/dollar-sign.png")}
+            />
+            <UserRectangles
+              text="MAKEUP ARTIST - $20"
+              imageSource={require("../assets/icon.png")}
+            />
           </View>
         </View>
       </ScrollView>
@@ -145,6 +224,18 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     fontSize: 16,
   },
+  recentSearchesContainer: {
+    paddingHorizontal: 50,
+    marginTop: 10,
+  },
+  recentSearchItem: {
+    paddingVertical: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: "#ccc",
+  },
+  recentSearchText: {
+    fontSize: 16,
+  },
   scrollContentContainer: {
     flexGrow: 1,
     paddingTop: 20,
@@ -166,31 +257,33 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 20,
   },
+  rectangleContainer: {
+    marginBottom: 65,
+  },
   rectangle: {
     width: 350,
     height: 160,
     backgroundColor: "white",
     borderRadius: 10,
-    marginBottom: 65,
     position: "relative",
+    overflow: "hidden",
   },
-  textContainer: {
-    position: "absolute",
-    bottom: 10,
-    left: 10,
+  rectangleImage: {
+    width: "100%",
+    height: "100%",
+    resizeMode: "cover",
+    borderRadius: 10,
   },
   rectangleText: {
     fontWeight: "bold",
-    fontSize: 15,
-  },
-  textBottomLeft: {
+    fontSize: 20,
+    bottom: -10,
     textAlign: "left",
+    marginLeft: 10,
   },
   subTextContainer: {
-    position: "absolute",
-    bottom: -30,
-    left: 10,
     marginHorizontal: 50,
+    marginTop: 10,
   },
   subText: {
     fontSize: 12,
@@ -198,22 +291,22 @@ const styles = StyleSheet.create({
   },
   calendarButton: {
     position: "absolute",
-    bottom: 50,
-    right: 20,
+    bottom: 5,
+    right: 16,
     backgroundColor: "transparent",
     borderRadius: 5,
-    padding: 5,
+    padding: 15,
   },
   calendarImage: {
-    width: 20,
-    height: 20,
+    width: 28,
+    height: 35,
     resizeMode: "contain",
   },
   rating: {
     flexDirection: "row",
-    bottom: 25,
+    bottom: 3,
     right: -5,
-    justifyContent: "flex-start", // Adjust the horizontal position
+    justifyContent: "flex-start",
   },
   ratingIconContainer: {
     marginRight: 2,
