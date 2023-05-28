@@ -10,10 +10,9 @@ import {
   TextInput,
 } from "react-native";
 import { Feather, FontAwesome, AntDesign } from "@expo/vector-icons";
-import NavBar from "../components/NavBar";
-import SearchBar from "../components/SearchBar";
-import HorizontalSwipeList from "../components/HorizontalSwipeList";
-import { useNavigation } from "@react-navigation/native";
+import NavBar from "../comcomponents/NavBar";
+import SearchBar from "../comcomponents/SearchBar";
+import HorizontalSwipeList from "../comcomponents/HorizontalSwipeList";
 
 class Profile extends Component {
   constructor(props) {
@@ -64,7 +63,7 @@ class Profile extends Component {
           <View style={styles.header}>
             <View style={styles.profileContainer}>
               <Image
-                source={require("../assets/person2.jpg")}
+                source={require("../../assets/person2.jpg")}
                 style={styles.pfp}
               />
               <Text style={styles.profileName}>Matthew Phan</Text>
@@ -91,7 +90,16 @@ class Profile extends Component {
             <Text> | 119 Reviews </Text>
           </View>
 
-          <HorizontalSwipeList title="Photos"></HorizontalSwipeList>
+          <HorizontalSwipeList
+            title="Photos"
+            data={[
+              { id: "1", image: require("../../assets/person1.jpg") },
+              { id: "2", image: require("../../assets/person7.jpg") },
+              { id: "3", image: require("../../assets/person3.jpg") },
+              { id: "4", image: require("../../assets/person4.jpg") },
+              { id: "5", image: require("../../assets/person7.jpg") },
+            ]}
+          ></HorizontalSwipeList>
 
           <View style={styles.infoContainer}>
             <Text style={{ fontWeight: "bold", fontSize: 18 }}>Info{"\n"}</Text>
@@ -123,19 +131,19 @@ class Profile extends Component {
             <Review
               name="Connor Delacruz"
               text="I love my new hair. Best barber on campus!"
-              img={require("../assets/connor.jpg")}
+              img={require("../../assets/connor.jpg")}
               rating={5}
             />
             <Review
               name="Rayyaan Nadeem"
               text="Did not know how to do perm."
-              img={require("../assets/person1.jpg")}
+              img={require("../../assets/person1.jpg")}
               rating={1}
             />
             <Review
               name="Kaushal Saleem"
               text="Decent haircut. Would go again because of cheap prices."
-              img={require("../assets/Kaushal.jpg")}
+              img={require("../../assets/Kaushal.jpg")}
               rating={3}
             />
             <Text>{"\n\n\n"}</Text>
@@ -268,6 +276,14 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     borderRadius: 20,
     marginBottom: 25,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   bioContainer: {
     margin: 10,
@@ -289,6 +305,14 @@ const styles = StyleSheet.create({
     height: 100,
     width: "100%",
     marginBottom: 20,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.15,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   reviewsContainer: {
     margin: 10,
@@ -301,6 +325,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     textAlign: "center",
     width: 200,
+  },
+  reviewContainer: {
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.15,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   review: {
     width: "100%",

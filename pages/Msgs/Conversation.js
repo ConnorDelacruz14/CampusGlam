@@ -1,9 +1,8 @@
 import React from "react";
 import { View, StyleSheet, Text } from "react-native";
-import NavBar from "../components/NavBar";
-import SearchBar from "../components/SearchBar";
+import NavBar from "../../components/NavBar";
 
-const Page = () => {
+const Conversation = () => {
   return (
     <View style={styles.container}>
       <Text>This page is for Messages</Text>
@@ -19,4 +18,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Page;
+export default Conversation;

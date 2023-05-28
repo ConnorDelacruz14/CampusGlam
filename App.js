@@ -4,8 +4,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import Home from "./pages/Home";
 import Search from "./pages/Search";
 import Appointments from "./pages/Appointments";
-import Messages from "./pages/Messages";
-import Profile from "./pages/Profile";
+import Messages from "./pages/Msgs/Messages";
+import Conversation from "./pages/Msgs/Conversation";
+import Profile from "./pages/Profiles/Profile";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 const Stack = createNativeStackNavigator();
@@ -37,6 +38,11 @@ function MyStack() {
         name="Profile"
         component={Profile}
         options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Conversation"
+        component={Conversation}
+        options={{ headerShown: true }}
       />
     </Stack.Navigator>
   );
