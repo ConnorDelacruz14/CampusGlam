@@ -42,10 +42,10 @@ export default function Home() {
       <ScrollView>
         <Option />
         <View style={styles.swipeListsContainer}>
-          <HorizontalSwipeList title="Featured" />
-          <HorizontalSwipeList title="Nearby" />
-          <ProfileIcon name="Connor" />
-          <ProfileIcon name="Matthew" />
+          <HorizontalSwipeList title="Hall Of Fame" />
+          <HorizontalSwipeList title="Nearby Stylists" />
+          <HorizontalSwipeList title="Past Stylists" pictureSize={80} />
+          <Text>{"\n\n\n\n"}</Text>
         </View>
       </ScrollView>
       <NavBar />
@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     justifyContent: "center",
+    padding: 10,
   },
   logoContainer: {
     display: "flex",
@@ -67,8 +68,8 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
   logo: {
-    width: 100,
-    height: 60,
+    width: 60,
+    height: 40,
   },
   swipeListsContainer: {
     flex: 1,

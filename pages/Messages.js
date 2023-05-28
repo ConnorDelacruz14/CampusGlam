@@ -1,6 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 import NavBar from "../components/NavBar";
+import SearchBar from "../components/SearchBar";
 
 const Page = () => {
   return (
