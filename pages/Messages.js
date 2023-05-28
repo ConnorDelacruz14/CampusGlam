@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import {
   View,
   StyleSheet,
@@ -38,30 +38,29 @@ const Page = () => {
   const searchInputRef = useRef(null);
   const [searchText, setSearchText] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
+  const [profileCardMarginTop, setProfileCardMarginTop] = useState(0); // Initial marginTop value
+
   const data = [
     { id: 1, name: "Lithuanian Prime Minister" },
     { id: 2, name: "Margret Hal" },
     { id: 3, name: "Mike Johnson" },
+    { id: 4, name: "Lizzo"},
   ];
 
   const handleSearchBarFocus = () => {
     setShowDropdown(true);
+    setProfileCardMarginTop(200); // Update the marginTop value when search bar is focused
   };
 
   const handleSearchBarBlur = () => {
     setShowDropdown(false);
+    setProfileCardMarginTop(0); // Reset the marginTop value when search bar loses focus
   };
 
   const handleSearchTextChange = (text) => {
     setSearchText(text);
     setShowDropdown(text.length > 0);
   };
-
-  // useEffect(() => {
-  //   if (searchInputRef.current && navigation.isFocused() && !searchInputRef.current.isFocused()) {
-  //     searchInputRef.current.focus();
-  //   }
-  // }, [navigation]);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -79,22 +78,27 @@ const Page = () => {
           onBlur={handleSearchBarBlur}
         />
         {showDropdown && (
-          <FlatList
-            style={styles.dropdown}
-            data={data}
-            renderItem={({ item }) => (
-              <TouchableOpacity
-                style={styles.dropdownItem}
-                onPress={() => setSearchText(item.name)}
-              >
-                <Text>{item.name}</Text>
-              </TouchableOpacity>
-            )}
-            keyExtractor={(item) => item.id.toString()}
-          />
+          <View style={styles.dropdownContainer}>
+            <ScrollView style={styles.dropdown}>
+              <FlatList
+                data={data}
+                renderItem={({ item }) => (
+                  <TouchableOpacity
+                    style={styles.dropdownItem}
+                    onPress={() => setSearchText(item.name)}
+                  >
+                    <Text>{item.name}</Text>
+                  </TouchableOpacity>
+                )}
+                keyExtractor={(item) => item.id.toString()}
+              />
+            </ScrollView>
+          </View>
         )}
       </View>
-      <ScrollView contentContainerStyle={styles.profileCardContainer}>
+      <ScrollView
+        contentContainerStyle={[styles.profileCardContainer, { marginTop: profileCardMarginTop }]}
+      >
         <ProfileCard
           imageSource={require("../assets/person1.jpg")}
           name="Lithuanian Prime Minister"
@@ -107,6 +111,10 @@ const Page = () => {
           imageSource={require("../assets/person3.jpg")}
           name="Mike Johnson"
         />
+        <ProfileCard
+          imageSource={require("../assets/lizzo.jpg")}
+          name="Lizzo"
+          ></ProfileCard>
       </ScrollView>
       <NavBar />
     </SafeAreaView>
@@ -149,7 +157,7 @@ const styles = StyleSheet.create({
     borderColor: "#DDD",
     backgroundColor: "#F8F8F8",
   },
-  dropdown: {
+  dropdownContainer: {
     position: "absolute",
     top: 70,
     left: 16,
@@ -158,6 +166,11 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     backgroundColor: "#FFF",
     elevation: 4,
+    zIndex: 1,
+  },
+  dropdown: {
+    flex: 1,
+    borderRadius: 8,
   },
   dropdownItem: {
     paddingHorizontal: 10,
@@ -165,8 +178,8 @@ const styles = StyleSheet.create({
   },
   profileCardContainer: {
     paddingHorizontal: 16,
-    paddingBottom: 16,
-    marginBottom: 200, // Adjust this value as needed
+    paddingBottom: 15,
+    bottom: -15,
   },
   profileButton: {
     marginBottom: 16,
