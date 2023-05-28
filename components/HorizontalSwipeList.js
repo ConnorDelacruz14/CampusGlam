@@ -10,14 +10,6 @@ import {
 } from "react-native";
 import { PanGestureHandler, State } from "react-native-gesture-handler";
 
-const data = [
-  { id: "1", image: require("../assets/person1.jpg") },
-  { id: "2", image: require("../assets/person7.jpg") },
-  { id: "3", image: require("../assets/person3.jpg") },
-  { id: "4", image: require("../assets/person4.jpg") },
-  { id: "5", image: require("../assets/person7.jpg") },
-];
-
 class HorizontalSwipeList extends Component {
   constructor(props) {
     super(props);
@@ -26,6 +18,7 @@ class HorizontalSwipeList extends Component {
     this.listWidth = 0;
     this.itemWidth = this.props.pictureSize || 120; // Default size is 120
     this.containerWidth = 0;
+    this.data = this.props.data;
   }
 
   handleLayout = (event) => {
@@ -94,7 +87,7 @@ class HorizontalSwipeList extends Component {
           }}
         >
           <FlatList
-            data={data}
+            data={this.data}
             renderItem={this.renderListItem}
             keyExtractor={(item) => item.id}
             horizontal
