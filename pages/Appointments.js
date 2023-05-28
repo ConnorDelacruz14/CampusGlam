@@ -4,9 +4,9 @@ import NavBar from "../components/NavBar";
 
 const AppointmentsPage = () => {
   const [appointments, setAppointments] = useState([
-    { id: "1", title: "Appointment 1" },
-    { id: "2", title: "Appointment 2" },
-    { id: "3", title: "Appointment 3" },
+    { id: "1", title: "Hair Appointment" },
+    { id: "2", title: "Makeup Appointment" },
+    { id: "3", title: "Lash Appointment" },
   ]);
 
   const handleReschedule = (itemId) => {
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   rescheduleButton: {
-    backgroundColor: "#007AFF",
+    backgroundColor: "red",
     paddingVertical: 6,
     paddingHorizontal: 12,
     borderRadius: 4,

@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
   listTitle: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#808080",
+    color: "black",
     marginBottom: 10,
     marginLeft: 20,
   },

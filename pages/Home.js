@@ -51,7 +51,7 @@ export default function Home() {
         <Option />
         <View style={styles.swipeListsContainer}>
           <HorizontalSwipeList
-            title="Hall Of Fame"
+            title="Hall Of Fame 🏆"
             data={[
               { id: "1", image: require("../assets/person1.jpg") },
               { id: "8", image: require("../assets/person8.jpg") },
@@ -61,7 +61,7 @@ export default function Home() {
             ]}
           />
           <HorizontalSwipeList
-            title="Nearby Stylists"
+            title="Nearby Stylists 📌"
             data={[
               { id: "2", image: require("../assets/person2.jpg") },
               { id: "10", image: require("../assets/person10.jpg") },
@@ -71,7 +71,7 @@ export default function Home() {
             ]}
           />
           <HorizontalSwipeList
-            title="Past Stylists"
+            title="Past Stylists 🕛"
             pictureSize={80}
             data={[
               { id: "1", image: require("../assets/person1.jpg") },
@@ -81,7 +81,7 @@ export default function Home() {
             ]}
           />
           <HorizontalSwipeList
-            title="Featured Today"
+            title="Featured Today 🔥"
             pictureSize={80}
             data={[
               { id: "4", image: require("../assets/person4.jpg") },
