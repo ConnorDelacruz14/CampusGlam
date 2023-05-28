@@ -21,13 +21,14 @@ const UserRectangles = ({
   imageSource,
   welcomeText,
   welcomeTextStyle,
+  name,
 }) => {
   const navigation = useNavigation();
 
   return (
     <TouchableOpacity
       style={styles.rectangleContainer}
-      onPress={() => navigation.navigate("Details")} // Replace "Details" with the appropriate screen name
+      onPress={() => navigation.navigate("Profile", {name: name})} // Replace "Profile" with the appropriate screen name for the user's profile screen
     >
       <View style={styles.rectangle}>
         <Image source={imageSource} style={styles.rectangleImage} />
@@ -167,22 +168,27 @@ export default function Home() {
             <UserRectangles
               text="FADED BARBER - $45"
               imageSource={require("../assets/person1.jpg")}
+              name="Rayyaan Nadeem"
             />
             <UserRectangles
               text="HAIR STYLIST - $20"
               imageSource={require("../assets/person2.jpg")}
+              name="Matthew Phan"
             />
             <UserRectangles
               text="NAIL TECH - $22.50"
               imageSource={require("../assets/person3.jpg")}
+              name="Mike Johnson"
             />
             <UserRectangles
               text="YOGA SESSION - $15/HR"
               imageSource={require("../assets/person4.jpg")}
+              name="Sally Harris"
             />
             <UserRectangles
               text="BOXING - $25"
               imageSource={require("../assets/person5.jpg")}
+              name="Kaushal Saleem"
             />
             <UserRectangles
               text="CAR WASH - $10/HR"

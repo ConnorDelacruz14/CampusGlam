@@ -26,7 +26,7 @@ export default function Home() {
             color="#808080"
             style={{ marginLeft: 0, marginRight: 20 }}
             onPress={() => {
-              navigation.navigate("Chat");
+              navigation.navigate("Appointments")
             }}
           ></Feather>
           <Feather
@@ -78,6 +78,16 @@ export default function Home() {
               { id: "3", image: require("../assets/person3.jpg") },
               { id: "4", image: require("../assets/person4.jpg") },
               { id: "9", image: require("../assets/person8.jpg") },
+            ]}
+          />
+          <HorizontalSwipeList
+            title="Featured Today"
+            pictureSize={80}
+            data={[
+              { id: "4", image: require("../assets/person4.jpg") },
+              { id: "5", image: require("../assets/person5.jpg") },
+              { id: "7", image: require("../assets/person7.jpg") },
+              { id: "2", image: require("../assets/person2.jpg") },
             ]}
           />
           <Text>{"\n\n\n\n"}</Text>

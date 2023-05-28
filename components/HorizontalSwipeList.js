@@ -108,7 +108,7 @@ const HorizontalSwipeList = ({ title, data, pictureSize }) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: 200,
+    height: 180,
     marginLeft: -10,
   },
   listContainer: {

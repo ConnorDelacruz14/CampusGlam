@@ -21,7 +21,7 @@ const ProfileCard = ({ imageSource, name }) => {
   return (
     <TouchableOpacity
       style={styles.profileButton}
-      onPress={() => navigation.navigate("Home")}
+      onPress={() => navigation.navigate("Chat", {name})}
     >
       <View style={styles.profileCard}>
         <View style={styles.profileImageContainer}>
@@ -41,7 +41,7 @@ const Page = () => {
   const [profileCardMarginTop, setProfileCardMarginTop] = useState(0); // Initial marginTop value
 
   const data = [
-    { id: 1, name: "Lithuanian Prime Minister" },
+    { id: 1, name: "Conor Delacruz" },
     { id: 2, name: "Margret Hal" },
     { id: 3, name: "Mike Johnson" },
     { id: 4, name: "Lizzo"},
@@ -100,20 +100,24 @@ const Page = () => {
         contentContainerStyle={[styles.profileCardContainer, { marginTop: profileCardMarginTop }]}
       >
         <ProfileCard
-          imageSource={require("../assets/person1.jpg")}
-          name="Lithuanian Prime Minister"
+          imageSource={require("../assets/connor.jpg")}
+          name="Connor Delacruz"
         />
         <ProfileCard
           imageSource={require("../assets/person2.jpg")}
-          name="Margret Hal"
+          name="B Matthew"
         />
+        <ProfileCard
+          imageSource={require("../assets/muk_ali.jpeg")}
+          name="Ali Mukarram"
+          ></ProfileCard>
         <ProfileCard
           imageSource={require("../assets/person3.jpg")}
           name="Mike Johnson"
         />
-        <ProfileCard
-          imageSource={require("../assets/lizzo.jpg")}
-          name="Lizzo"
+       <ProfileCard
+          imageSource={require("../assets/person1.jpg")}
+          name="Rayyaan Nadeem"
           ></ProfileCard>
       </ScrollView>
       <NavBar />

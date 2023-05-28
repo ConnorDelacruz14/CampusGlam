@@ -3,7 +3,8 @@ import { View, StyleSheet, Text, ScrollView, TextInput, TouchableOpacity, Keyboa
 import { useNavigation } from "@react-navigation/native";
 import NavBar from "../components/NavBar";
 
-export default function Chat() {
+export default function Chat({ route }) {
+  const { name } = route.params;
   const navigation = useNavigation();
   const [message, setMessage] = React.useState("");
   const [messages, setMessages] = React.useState([]);
@@ -11,13 +12,13 @@ export default function Chat() {
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
-      title: 'Connor Delacruz',
+      title: name, // Set the title to the value of the "name" prop
       headerLargeTitle: true,
       headerSearchBarOptions: {
-        placeholder: "Search Conversation"
-      }
+        placeholder: "Search Conversation",
+      },
     });
-  }, [navigation]);
+  }, [navigation, name]);
 
   const sendMessage = () => {
     // Perform actions to send the message (e.g., send API request, update chat state, etc.)
