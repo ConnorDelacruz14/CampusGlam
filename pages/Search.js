@@ -15,7 +15,7 @@ import NavBar from "../components/NavBar";
 
 const UserRectangles = ({ text, textStyle, subText }) => {
   const navigation = useNavigation();
-
+//
   return (
     <View style={styles.rectangleContainer}>
       <View style={styles.rectangle}>
@@ -222,7 +222,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     color: "#ccc",
   },
-  selectedRatingIconContainer: {
+  selectedRatingIconContainer: { //
     marginRight: 2,
   },
   selectedRatingIcon: {
