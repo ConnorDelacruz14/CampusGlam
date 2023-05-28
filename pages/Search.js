@@ -106,14 +106,14 @@ export default function Home() {
         <View style={styles.contentContainer}>
           <Text style={styles.title}>TRENDING</Text>
           <View style={styles.rectanglesContainer}>
-            <UserRectangles text="FADED BARBER" />
-            <UserRectangles text="HAIR STYLIST" />
-            <UserRectangles text="NAIL TECH"/>
-            <UserRectangles text="YOGA SESSION"/>
-            <UserRectangles text="BOXING PRACTICE"/>
-            <UserRectangles text="CAR WASH"/>
-            <UserRectangles text="ART CLASS"/>
-            <UserRectangles text="MAKEUP ARTIST"/>
+            <UserRectangles text="FADED BARBER - $45 " />
+            <UserRectangles text="HAIR STYLIST - $20" />
+            <UserRectangles text="NAIL TECH - $22.50"/>
+            <UserRectangles text="YOGA SESSION - $15/HR "/>
+            <UserRectangles text="BOXING - $25"/>
+            <UserRectangles text="CAR WASH - $10/HR"/>
+            <UserRectangles text="ART CLASS - $10"/>
+            <UserRectangles text="MAKEUP ARTIST - $20"/>
           </View>
         </View>
       </ScrollView>
@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
   },
   rectangleText: {
     fontWeight: "bold",
-    fontSize: 20,
+    fontSize: 15,
   },
   textBottomLeft: {
     textAlign: "left",
