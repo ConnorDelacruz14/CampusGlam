@@ -226,7 +226,7 @@ const styles = StyleSheet.create({
   },
   recentSearchesContainer: {
     paddingHorizontal: 50,
-    marginTop: 10,
+    marginTop: 1,
   },
   recentSearchItem: {
     paddingVertical: 15,
