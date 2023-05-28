@@ -66,7 +66,7 @@ const Page = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>Messages</Text>
+        {/* <Text style={styles.title}>Messages</Text> */}
       </View>
       <View style={styles.searchContainer}>
         <TextInput
@@ -118,18 +118,18 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#FFF",
   },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    paddingHorizontal: 16,
-    paddingTop: 16,
-    paddingBottom: 8,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-  },
+  // header: {
+  //   flexDirection: "row",
+  //   alignItems: "center",
+  //   justifyContent: "space-between",
+  //   paddingHorizontal: 16,
+  //   paddingTop: 16,
+  //   paddingBottom: 8,
+  // },
+  // title: {
+  //   fontSize: 24,
+  //   fontWeight: "bold",
+  // },
   searchContainer: {
     flexDirection: "row",
     alignItems: "center",
