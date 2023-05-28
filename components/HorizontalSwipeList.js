@@ -99,37 +99,28 @@ class HorizontalSwipeList extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 200,
-    marginBottom: 20,
+    height: 200,
   },
   listContainer: {
     flex: 1,
+    marginRight: 20,
+    marginLeft: -20,
   },
   listTitle: {
     fontSize: 18,
     fontWeight: "bold",
     color: "#808080",
     marginBottom: 10,
-    marginLeft: 35,
+    marginLeft: 20,
   },
   itemContainer: {
     alignItems: "center",
     marginLeft: 35,
   },
-  itemContent: {
-    alignItems: "center",
-    justifyContent: "center",
-  },
   itemImage: {
     width: 120,
     height: 120,
     borderRadius: 10,
-  },
-  itemTitle: {
-    marginTop: 8,
-    fontSize: 14,
-    fontWeight: "bold",
-    textAlign: "center",
   },
 });
 
