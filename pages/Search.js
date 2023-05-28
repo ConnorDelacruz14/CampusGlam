@@ -1,38 +1,80 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState } from "react";
 import {
   TextInput,
   StyleSheet,
   Text,
   View,
-  TouchableWithoutFeedback,
-  Keyboard,
+  Image,
   ScrollView,
   SafeAreaView,
+  TouchableOpacity,
 } from "react-native";
-import { Feather } from "@expo/vector-icons";
+import { Feather, AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import NavBar from "../components/NavBar";
 
-class UserRectangles extends React.Component {
-  render() {
-    const { text, textStyle } = this.props;
-    return (
-      <View style={styles.rectangle}>
-        <Text style={[styles.rectangleText, textStyle, { fontFamily: "FancyFont" }]}>{text}</Text>
+const UserRectangles = ({ text, textStyle, subText }) => {
+  const navigation = useNavigation();
+
+  const handlePress = () => {
+    navigation.navigate("Appointments");
+  };
+
+  return (
+    <TouchableOpacity style={styles.rectangle} onPress={handlePress}>
+      <View style={styles.textContainer}>
+        <Text style={[styles.rectangleText, styles.textBottomLeft, textStyle]}>
+          {text}
+        </Text>
       </View>
-    );
-  }
-}
+      <View style={styles.subTextContainer}>
+        <Text style={styles.subText}>{subText}</Text>
+      </View>
+      <Rating />
+    </TouchableOpacity>
+  );
+};
+
+const Rating = () => {
+  const [selectedRating, setSelectedRating] = useState(0);
+
+  const handleRatingPress = (rating) => {
+    setSelectedRating(rating === selectedRating ? 0 : rating);
+  };
+
+  return (
+    <View style={styles.rating}>
+      {[...Array(5)].map((_, index) => (
+        <TouchableOpacity
+          key={index}
+          onPress={() => handleRatingPress(index + 1)}
+          style={[
+            styles.ratingIconContainer,
+            selectedRating >= index + 1 && styles.selectedRatingIconContainer,
+          ]}
+        >
+          <AntDesign
+            name="star"
+            style={[
+              styles.ratingIcon,
+              selectedRating >= index + 1 && styles.selectedRatingIcon,
+            ]}
+          />
+        </TouchableOpacity>
+      ))}
+    </View>
+  );
+};
 
 export default function Home() {
   const navigation = useNavigation();
-  const searchInputRef = useRef(null);
+  const searchInputRef = React.useRef(null);
 
   const handlePress = () => {
     navigation.navigate("Home");
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (navigation.isFocused()) {
       searchInputRef.current.focus();
     }
@@ -61,21 +103,13 @@ export default function Home() {
         <View style={styles.contentContainer}>
           <Text style={styles.title}>TRENDING</Text>
           <View style={styles.rectanglesContainer}>
-            <UserRectangles
-              text="Lash Salon"
-              textStyle={styles.textStyle2}
-            />
-            <Text style={styles.textSpacing}>&nbsp;</Text>
+            <UserRectangles text="Faded barber" />
+            <UserRectangles text="New barber" />
             <UserRectangles />
-            <Text style={styles.textSpacing}>&nbsp;</Text>
             <UserRectangles />
-            <Text style={styles.textSpacing}>&nbsp;</Text>
             <UserRectangles />
-            <Text style={styles.textSpacing}>&nbsp;</Text>
             <UserRectangles />
-            <Text style={styles.textSpacing}>&nbsp;</Text>
             <UserRectangles />
-            <Text style={styles.textSpacing}>&nbsp;</Text>
             <UserRectangles />
           </View>
         </View>
@@ -135,15 +169,58 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderRadius: 10,
     marginBottom: 65,
+    position: "relative",
+  },
+  textContainer: {
+    position: "absolute",
+    bottom: 10,
+    left: 10,
   },
   rectangleText: {
-    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 20,
   },
-  textSpacing: {
-    height: 10,
-    fontSize: 0, // Hide the text spacing, setting it to zero font size
+  textBottomLeft: {
+    textAlign: "left",
   },
-  // textStyle1: {
-    
-  // },
+  subTextContainer: {
+    position: "absolute",
+    bottom: -30,
+    left: 10,
+    marginHorizontal: 50,
+  },
+  subText: {
+    fontSize: 12,
+    color: "gray",
+  },
+  calendarButton: {
+    position: "absolute",
+    bottom: 10,
+    right: 10,
+    backgroundColor: "transparent",
+    borderRadius: 5,
+    padding: 5,
+  },
+  calendarImage: {
+    width: 20,
+    height: 20,
+    resizeMode: "contain",
+  },
+  rating: {
+    flexDirection: "row",
+  },
+  ratingIconContainer: {
+    marginRight: 2,
+  },
+  ratingIcon: {
+    fontSize: 24,
+    color: "#ccc",
+  },
+  selectedRatingIconContainer: {
+    marginRight: 2,
+  },
+  selectedRatingIcon: {
+    color: "gold",
+    opacity: 1,
+  },
 });
