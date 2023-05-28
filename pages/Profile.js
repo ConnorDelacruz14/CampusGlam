@@ -64,7 +64,7 @@ class Profile extends Component {
       this.name = "Rayyaan Nadeem";
       this.hours = "Monday-Thursday 5pm - 8pm";
       this.specialties = "Men's haircuts, fading";
-      this.highlights = "Quick and to the point, talkative";
+      this.highlights = "Singing during haircut, talkative";
     } else if (this.id === "2") {
       this.picture = require("../assets/person2.jpg");
       this.name = "Matthew Phan";
@@ -98,20 +98,20 @@ class Profile extends Component {
       this.specialties = "Men's haircuts";
       this.highlights = "Caring, funny, efficient";
     } else if (this.id === "8") {
-      this.picture = require("../assets/zendaya.jpeg");
-      this.name = "Zendaya";
+      this.picture = require("../assets/person8.jpg");
+      this.name = "Allie Patie";
       this.hours = "By appointment only";
       this.specialties = "Men's haircuts";
       this.highlights = "Caring, funny, efficient";
     } else if (this.id === "9") {
-      this.picture = require("../assets/lizzo.jpg");
-      this.name = "Lizzo";
+      this.picture = require("../assets/person19.jpg");
+      this.name = "Jenny Kim";
       this.hours = "By appointment only";
       this.specialties = "Nails and Men's haircuts";
       this.highlights = "Singing and dancing while cutting hair";
     } else if (this.id === "10") {
-      this.picture = require("../assets/taylor_swift.jpg");
-      this.name = "Taylor Swift";
+      this.picture = require("../assets/person10.jpg");
+      this.name = "Taylor Chang";
       this.hours = "By appointment only";
       this.specialties = "Singing and Beauty";
       this.highlights = "Easygoing, cheerful";
