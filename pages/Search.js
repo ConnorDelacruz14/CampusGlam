@@ -16,22 +16,25 @@ import NavBar from "../components/NavBar";
 const UserRectangles = ({ text, textStyle, subText }) => {
   const navigation = useNavigation();
 
-  const handlePress = () => {
-    navigation.navigate("Appointments");
-  };
-
   return (
-    <TouchableOpacity style={styles.rectangle} onPress={handlePress}>
-      <View style={styles.textContainer}>
-        <Text style={[styles.rectangleText, styles.textBottomLeft, textStyle]}>
-          {text}
-        </Text>
+    <View style={styles.rectangleContainer}>
+      <View style={styles.rectangle}>
+        <View style={styles.textContainer}>
+          <Text style={[styles.rectangleText, styles.textBottomLeft, textStyle]}>
+            {text}
+          </Text>
+        </View>
+        <View style={styles.subTextContainer}>
+          <Text style={styles.subText}>{subText}</Text>
+        </View>
       </View>
-      <View style={styles.subTextContainer}>
-        <Text style={styles.subText}>{subText}</Text>
+      <TouchableOpacity style={styles.calendarButton} onPress={() => navigation.navigate("Appointments")}>
+        <Image source={require("../assets/calendar.png")} style={styles.calendarImage} />
+      </TouchableOpacity>
+      <View style={styles.rating}>
+        <Rating />
       </View>
-      <Rating />
-    </TouchableOpacity>
+    </View>
   );
 };
 
@@ -43,7 +46,7 @@ const Rating = () => {
   };
 
   return (
-    <View style={styles.rating}>
+    <View style={[styles.rating, { justifyContent: "center" }]}>
       {[...Array(5)].map((_, index) => (
         <TouchableOpacity
           key={index}
@@ -103,14 +106,14 @@ export default function Home() {
         <View style={styles.contentContainer}>
           <Text style={styles.title}>TRENDING</Text>
           <View style={styles.rectanglesContainer}>
-            <UserRectangles text="Faded barber" />
-            <UserRectangles text="New barber" />
-            <UserRectangles />
-            <UserRectangles />
-            <UserRectangles />
-            <UserRectangles />
-            <UserRectangles />
-            <UserRectangles />
+            <UserRectangles text="FADED BARBER" />
+            <UserRectangles text="HAIR STYLIST" />
+            <UserRectangles text="NAIL TECH"/>
+            <UserRectangles text="YOGA SESSION"/>
+            <UserRectangles text="BOXING PRACTICE"/>
+            <UserRectangles text="CAR WASH"/>
+            <UserRectangles text="ART CLASS"/>
+            <UserRectangles text="MAKEUP ARTIST"/>
           </View>
         </View>
       </ScrollView>
@@ -195,8 +198,8 @@ const styles = StyleSheet.create({
   },
   calendarButton: {
     position: "absolute",
-    bottom: 10,
-    right: 10,
+    bottom: 50,
+    right: 20,
     backgroundColor: "transparent",
     borderRadius: 5,
     padding: 5,
@@ -208,6 +211,9 @@ const styles = StyleSheet.create({
   },
   rating: {
     flexDirection: "row",
+    bottom: 25,
+    right: -5,
+    justifyContent: "flex-start", // Adjust the horizontal position
   },
   ratingIconContainer: {
     marginRight: 2,
