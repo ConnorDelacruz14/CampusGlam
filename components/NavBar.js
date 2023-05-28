@@ -14,10 +14,10 @@ export default function NavBar() {
         backgroundColor: "#fff",
         borderTopWidth: 1,
         borderTopColor: "#ccc",
-        height: 70,
-        width: "100%",
+        height: 90,
+        width: "105%",
         position: "absolute",
-        bottom: 0,
+        bottom: -20,
         marginVertical: 15,
       }}
     >
